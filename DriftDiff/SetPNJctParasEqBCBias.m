@@ -14,12 +14,17 @@ pi = x >= l/2;
 
 Nd = 4e16 * 1e6; % Const. 1/cm3 (100 cm/m)^3
 Na = 1e16 * 1e6;
-NetDoping(ni) = Nd;
-NetDoping(pi) = -Na;
+% NetDoping(ni) = Nd;
+% NetDoping(pi) = -Na;
+
+
+NetDoping(1:40) = Nd; %Set first 40 to donor amount
+NetDoping(161:201) = -Na; %Set last 40 to acceptor amount
+NetDoping(41:160) = linspace(Nd, -Na, 120); %Linear gradient generation
 
 x0 = l/2;
 nw = l/20;
-npDisturbance = 0e16*1e6*exp(-((x-x0)/nw).^2);
+npDisturbance = 1e16*1e6*exp(-((x-x0)/nw).^2);
 
 JBC = 1;
 
@@ -36,13 +41,13 @@ Wp = (W - Wn);
 LVbc = Phi;
 
 PlotSS = 0;
-PlotYAxis = {[0 Phi+0.1] [0e5 40e5] [-20e2 40e2]...
-    [0e21 2.5e22] [0 1.1e22] [0 20e43]...
-    [-5e33 5e33] [-5e33 5e33] [-0e8 3e8] ...
-    [1e-3 1e8] [-3e6 1e6] [0 2.5e22]};
-doPlotImage = 1;
+%PlotYAxis = {[0 Phi+0.1] [0e5 40e5] [-20e2 40e2]...
+%    [0e21 2.5e22] [0 1.1e22] [0 20e43]...
+%    [-5e33 5e33] [-5e33 5e33] [-0e8 3e8] ...
+%    [1e-3 1e8] [-3e6 1e6] [0 2.5e22]};
+doPlotImage = 0;
 
-SecondSim = 1;
+SecondSim = 0;
 LVbc2 = Phi-0.3;
 TStop2 = TStop +  80000000*1e-18;
 

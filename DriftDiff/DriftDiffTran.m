@@ -38,9 +38,9 @@ PlotFile = 'image.gif';
 PlotCount = 0;
 doPlotImage = 0; % set to 1 to draw the image
 
-% Simulation = 'PNJctEqBias';
+Simulation = 'PNJctEqBias';
 % Simulation = 'GaussianTwoCarRCLinGrad';
-Simulation = 'TAPA';
+% Simulation = 'TAPA';
 
 if strcmp(Simulation,'GaussianTwoCar')
     eval('SetGaussian2CarParas');
